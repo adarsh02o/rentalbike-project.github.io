@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dart Subscription Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .subscription-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .subscription-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .subscription-form input,
+        .subscription-form select,
+        .subscription-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .subscription-form button {
+            background-color: #e08fa3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .subscription-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body style="background-color:rgb(231, 157, 180);">
+    <div   class="subscription-form">
+        <h2 style="color: #d691a0;">Are You Ready For Ride With Dart</h2>
+        <form id="subscriptionForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <select id="subscriptionType" required>
+                <option value="">Select Subscription Type</option>
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <input type="number" id="duration" placeholder="Duration (in hours/days/months)" required>
+            <button type="submit">Book Now</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById('subscriptionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subscriptionType = document.getElementById('subscriptionType').value;
+            const duration = document.getElementById('duration').value;
+
+            if (name && email && subscriptionType && duration) {
+                document.getElementById('message').innerText = `Thank you, ${name}! You have subscribed to our ${subscriptionType} plan for ${duration}.`;
+            } else {
+                document.getElementById('message').innerText = 'Please fill out all fields.';
+            }
+        });
+    </script>
+</body>
+</html>
